@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Making Widgets Look Nice | Using Python</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://usingpython.com/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://usingpython.com/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.24 - http://yoast.com/wordpress/seo/ -->
+<link rel="canonical" href="http://usingpython.com/making-widgets-look-nice/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Making Widgets Look Nice - Using Python" />
+<meta property="og:description" content="Making Widgets Look Nice A lot of the time, you&#8217;ll want your windows and their widgets to have the normal look and feel of your operating system, which Tkinter does for you. For example, my GUIs were developed on a PC running Windows 7. But if you run these examples on, say, Windows 8, they automatically change to [...]" />
+<meta property="og:url" content="http://usingpython.com/making-widgets-look-nice/" />
+<meta property="og:site_name" content="Using Python" />
+<meta property="article:published_time" content="2013-04-04T16:43:32+00:00" />
+<meta property="article:modified_time" content="2014-02-01T10:33:11+00:00" />
+<meta property="og:image" content="http://usingpython.com/wp-content/uploads/LoginGUI.jpg" />
+<meta property="og:image" content="http://usingpython.com/wp-content/uploads/LoginGuiW8.jpg" />
+<meta property="og:image" content="http://usingpython.com/wp-content/uploads/Look1.jpg" />
+<meta property="og:image" content="http://usingpython.com/wp-content/uploads/Look2.jpg" />
+<meta property="og:image" content="http://usingpython.com/wp-content/uploads/UPLogin.jpg" />
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Using Python &raquo; Feed" href="http://usingpython.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Using Python &raquo; Comments Feed" href="http://usingpython.com/comments/feed/" />
+<link rel='stylesheet' id='crayon-css'  href='http://usingpython.com/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=2.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-classic-css'  href='http://usingpython.com/wp-content/plugins/crayon-syntax-highlighter/themes/classic/classic.css?ver=2.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://usingpython.com/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=2.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='collapseomatic-css-css'  href='http://usingpython.com/wp-content/plugins/jquery-collapse-o-matic/light_style.css?ver=1.5.7' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-style-css'  href='http://usingpython.com/wp-content/themes/twentytwelve/style.css?ver=3.5' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://usingpython.com/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='easy_table_style-css'  href='http://usingpython.com/wp-content/plugins/easy-table/themes/default/style.css?ver=1.4' type='text/css' media='all' />
+<script type='text/javascript' src='http://usingpython.com/wp-includes/js/jquery/jquery.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.4.3","is_admin":"0","ajaxurl":"http:\/\/usingpython.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://usingpython.com/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=2.4.3'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://usingpython.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://usingpython.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.5" />
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37595727-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<script type="text/javascript">
+<!--
+/******************************************************************************
+***   COPY PROTECTED BY CHETANGOLE.COM/BLOG/WP-COPYPROTECT   version 3.0.0 ****
+******************************************************************************/
+function clickIE4(){
+if (event.button==2){
+return false;
+}
+}
+function clickNS4(e){
+if (document.layers||document.getElementById&&!document.all){
+if (e.which==2||e.which==3){
+return false;
+}
+}
+}
+
+if (document.layers){
+document.captureEvents(Event.MOUSEDOWN);
+document.onmousedown=clickNS4;
+}
+else if (document.all&&!document.getElementById){
+document.onmousedown=clickIE4;
+}
+
+document.oncontextmenu=new Function("return false")
+// --> 
+</script>
+
+<script type="text/javascript">
+/******************************************************************************
+***   COPY PROTECTED BY CHETANGOLE.COM/BLOG/WP-COPYPROTECT   version 3.0.0 ****
+******************************************************************************/
+function disableSelection(target){
+if (typeof target.onselectstart!="undefined") //For IE 
+	target.onselectstart=function(){return false}
+else if (typeof target.style.MozUserSelect!="undefined") //For Firefox
+	target.style.MozUserSelect="none"
+else //All other route (For Opera)
+	target.onmousedown=function(){return false}
+target.style.cursor = "default"
+}
+</script>
+	<style type="text/css">
+			.site-title,
+		.site-description {
+			position: absolute !important;
+			clip: rect(1px 1px 1px 1px); /* IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+		</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #7a7a7a; }
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+
+</head>
+
+<body class="page page-id-1103 page-template page-template-page-templatespage-paid-php custom-background custom-font-enabled single-author">
+
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="http://usingpython.com/" title="Using Python" rel="home">Using Python</a></h1>
+			<h2 class="site-description">Using Python &#8212; Learn Python for OCR or Edexcel GCSE Computing through problem solving.</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<div class="menu-python-container"><ul id="menu-python" class="nav-menu"><li id="menu-item-71" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71"><a href="http://usingpython.com/python-introduction/">Introduction</a></li>
+<li id="menu-item-69" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69"><a href="http://usingpython.com/running-a-python-program/">Running a Python Program</a></li>
+<li id="menu-item-70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70"><a href="http://usingpython.com/python-numbers/">Numbers</a></li>
+<li id="menu-item-102" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102"><a href="http://usingpython.com/python-text/">Text</a></li>
+<li id="menu-item-125" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-125"><a href="http://usingpython.com/python-variables/">Variables</a></li>
+<li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-223"><a href="http://usingpython.com/variables-solution/">Banner Program Solution</a></li>
+<li id="menu-item-356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-356"><a href="http://usingpython.com/python-casting/">Casting</a></li>
+<li id="menu-item-355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-355"><a href="http://usingpython.com/casting-solution/">Area of a Circle Solution</a></li>
+<li id="menu-item-1446" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1446"><a href="http://usingpython.com/python-boolean/">Boolean Data Type</a></li>
+<li id="menu-item-377" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-377"><a href="http://usingpython.com/python-if-statement/">&#8216;if&#8217; Statements</a></li>
+<li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="http://usingpython.com/quiz-program-solution/">Quiz Program Solution</a></li>
+<li id="menu-item-411" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-411"><a href="http://usingpython.com/python-if-else-statements/">&#8216;if-else&#8217; Statements</a></li>
+<li id="menu-item-420" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-420"><a href="http://usingpython.com/bob-solution/">BOB Program Solution</a></li>
+<li id="menu-item-485" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-485"><a href="http://usingpython.com/python-for-loop/">&#8216;for&#8217; Loops</a></li>
+<li id="menu-item-493" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-493"><a href="http://usingpython.com/dr-love-program-solution/">Dr Love Program Solution</a></li>
+<li id="menu-item-546" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-546"><a href="http://usingpython.com/python-while-loops/">&#8216;while&#8217; Loops</a></li>
+<li id="menu-item-556" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-556"><a href="http://usingpython.com/double-or-quit-program-solution/">Double or Quit Program Solution</a></li>
+<li id="menu-item-604" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-604"><a href="http://usingpython.com/python-elif-statement/">&#8216;elif&#8217; Statement</a></li>
+<li id="menu-item-617" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-617"><a href="http://usingpython.com/bob-v3-program-solution/">BOB V3 Program Solution</a></li>
+<li id="menu-item-1256" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1256"><a href="http://usingpython.com/python-arrays/">Arrays</a></li>
+<li id="menu-item-641" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-641"><a href="http://usingpython.com/python-lists/">Lists</a></li>
+<li id="menu-item-677" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-677"><a href="http://usingpython.com/inventory-program-solution/">Inventory Program Solution</a></li>
+<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1261"><a href="http://usingpython.com/arrays-and-loops/">Arrays and Loops</a></li>
+<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1270"><a href="http://usingpython.com/homework-marks-program-solution/">Homework Marks Program Solution</a></li>
+<li id="menu-item-720" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-720"><a href="http://usingpython.com/python-dictionaries/">Dictionaries</a></li>
+<li id="menu-item-793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-793"><a href="http://usingpython.com/translator-program-solution/">Translator Program Solution</a></li>
+<li id="menu-item-802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-802"><a href="http://usingpython.com/python-functions/">Functions</a></li>
+<li id="menu-item-824" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-824"><a href="http://usingpython.com/python-file-handling/">File Handling</a></li>
+<li id="menu-item-837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-837"><a href="http://usingpython.com/high-score-program-solution/">High Score Program Solution</a></li>
+<li id="menu-item-848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-848"><a href="http://usingpython.com/python-pickling/">Pickling</a></li>
+<li id="menu-item-956" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-956"><a href="http://usingpython.com/python-hangman-game/">Challenge: Hangman</a></li>
+<li id="menu-item-958" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-958"><a href="http://usingpython.com/hangman-program-solution/">Hangman Program Solution</a></li>
+<li id="menu-item-858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-858"><a href="http://usingpython.com/python-battleships-game/">Challenge: Battleships</a></li>
+<li id="menu-item-874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-874"><a href="http://usingpython.com/battleships-program-solution/">Battleships Program Solution</a></li>
+<li id="menu-item-875" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-875"><a href="http://usingpython.com/python-rpg-game/">Challenge: RPG Game</a></li>
+<li id="menu-item-876" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-876"><a href="http://usingpython.com/rpg-program-solution/">RPG Program Solution</a></li>
+<li id="menu-item-957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-957"><a href="http://usingpython.com/python-programming-challenges/">Python Programming Challenges</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+
+					<a href="http://usingpython.com/"><img src="http://www.usingpython.com/wp-content/uploads/header1.jpg" class="header-image" width="960" height="250" alt="" /></a>
+		
+
+ <br><br>
+
+
+	<b><a href="http://usingpython.com">Home</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="http://usingpython.com/python-introduction/">Get Started</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="http://usingpython.com/menu">Menu</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="http://usingpython.com/python-programming-challenges">Challenges</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="http://usingpython.com/passwords-to-solutions/">Solution Passwords</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="http://usingpython.com/useful-stuff/">Useful Stuff</a>&nbsp;&nbsp;//&nbsp;&nbsp;<a href="http://usingpython.com/programs/">Awesome Programs</a>
+
+<br><br>
+<a href="http://usingpython.com/simple-gui-programming/">GUI Programming</a>&nbsp;&nbsp;//&nbsp;&nbsp;
+<a href="http://usingpython.com/pygame/">Pygame Minecraft 2D Tutorial</a>&nbsp;&nbsp;
+
+</b>
+
+<br><br><br>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Top Ad -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8709871350199562"
+     data-ad-slot="6770005305"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<br>
+
+	</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			<a href="http://usingpython.com/python-login-form-challenge-solution/" title="Login Form Challenge Solution">< Prev</a>			&nbsp;|&nbsp; <a  href='http://www.usingpython.com'>Home</a> &nbsp;|&nbsp;			<a href="http://usingpython.com/dynamically-creating-widgets/" title="Dynamically Creating Widgets">Next ></a>			<br><br>
+							
+	<article id="post-1103" class="post-1103 page type-page status-publish hentry">
+		<header class="entry-header">
+			
+		</header>
+
+		<div class="entry-content">
+			<h3>Making Widgets Look Nice</h3>
+<p>A lot of the time, you&#8217;ll want your windows and their widgets to have the normal look and feel of your operating system, which Tkinter does for you. For example, my GUIs were developed on a PC running Windows 7.</p>
+<p><img class="alignnone size-full wp-image-1092" style="font-size: 1rem; line-height: 1;" alt="Login GUI" src="http://usingpython.com/wp-content/uploads/LoginGUI.jpg" width="140" height="144" /></p>
+<p>But if you run these examples on, say, Windows 8, they automatically change to look like a Windows 8 program:</p>
+<p><a style="line-height: 1.714285714; font-size: 1rem;" href="http://usingpython.com/wp-content/uploads/LoginGuiW8.jpg"><img class="alignnone size-full wp-image-1104" alt="Login GUI in Windows 8" src="http://usingpython.com/wp-content/uploads/LoginGuiW8.jpg" width="141" height="146" /></a></p>
+<p>The window will also look different to both of these examples on a Mac, or a PC running Linux. Most of the time, you&#8217;ll want to leave the look of your GUI to look like other programs, but sometimes you&#8217;ll want to customise the look of your program. There&#8217;s lots you can do to alter how your GUI looks, and we&#8217;ll be discussing a few of these things in this section.</p>
+<p>Firstly, you already know that you can create a custom icon for your window, but we can also alter the colour of the window itself. I&#8217;m going to create customise the login form we created in the previous section to match the look and feel of this website. Adding the line:</p><!-- Crayon Syntax Highlighter v2.4.3 -->
+
+		<div id="crayon-55a7c4772835a422058801" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; float: none; clear: both; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="off" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+#set the window background to hex code '#a1dbcd'
+window.configure(background="#a1dbcd")</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-55a7c4772835a422058801-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c4772835a422058801-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-line" id="crayon-55a7c4772835a422058801-1"><span class="crayon-p">#set the window background to hex code '#a1dbcd'</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c4772835a422058801-2"><span class="crayon-v">window</span><span class="crayon-sy">.</span><span class="crayon-e">configure</span><span class="crayon-sy">(</span><span class="crayon-v">background</span><span class="crayon-o">=</span><span class="crayon-s">"#a1dbcd"</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0012 seconds] -->
+<p>will configure the window background to be the colour with hex code &#8216;#a1dbcd&#8217;. You don&#8217;t have to use hex colour codes though, you can just type in the name of any valid <a href="http://wiki.tcl.tk/37701">Tkinter colour</a> (for example &#8220;firebrickred2&#8243; or &#8220;cornsilk&#8221;). Adding a custom icon I created, along with the line above to change the window colour, we get the following:</p>
+<p><a href="http://usingpython.com/wp-content/uploads/Look1.jpg"><img class="alignnone size-full wp-image-1105" alt="Changing the window colour" src="http://usingpython.com/wp-content/uploads/Look1.jpg" width="141" height="146" /></a></p>
+<p>That&#8217;s looking a little better, but now it&#8217;s obvious that the label widgets have a different colour background to the main window. Let&#8217;s add another argument to the labels that we create, by changing them to the following:</p><!-- Crayon Syntax Highlighter v2.4.3 -->
+
+		<div id="crayon-55a7c4772838a563006280" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; float: none; clear: both; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="off" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+#create the widgets for entering a username
+lblUsername = tkinter.Label(window, text="Username:", bg="#a1dbcd")</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-55a7c4772838a563006280-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c4772838a563006280-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-line" id="crayon-55a7c4772838a563006280-1"><span class="crayon-p">#create the widgets for entering a username</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c4772838a563006280-2"><span class="crayon-v">lblUsername</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Label</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"Username:"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">bg</span><span class="crayon-o">=</span><span class="crayon-s">"#a1dbcd"</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0016 seconds] -->
+<p>As you can see, this just changes the background of the label &#8216;lblUsername&#8217; to be the same as the main widow background. Do the same to the &#8220;Password:&#8221; label, and you now get a much nicer looking form:</p>
+<p><a href="http://usingpython.com/wp-content/uploads/Look2.jpg"><img class="alignnone size-full wp-image-1106" alt="Changing the label background colour" src="http://usingpython.com/wp-content/uploads/Look2.jpg" width="141" height="146" /></a></p>
+<p>When you create widgets, you can also use &#8220;fg=&#8230;&#8221; to set the foreground (text colour) of a widget. So adding in lines like:</p><!-- Crayon Syntax Highlighter v2.4.3 -->
+
+		<div id="crayon-55a7c47728394795804740" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; float: none; clear: both; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="off" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+#create a button widget called btn
+btn = tkinter.Button(window, text="Login", fg="#a1dbcd", bg="#383a39")</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-55a7c47728394795804740-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c47728394795804740-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-line" id="crayon-55a7c47728394795804740-1"><span class="crayon-p">#create a button widget called btn</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c47728394795804740-2"><span class="crayon-v">btn</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Button</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"Login"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">fg</span><span class="crayon-o">=</span><span class="crayon-s">"#a1dbcd"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">bg</span><span class="crayon-o">=</span><span class="crayon-s">"#383a39"</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0018 seconds] -->
+<p>Creates a button widget that now has teal-coloured text on an off-black button. Finally, I&#8217;d like to add an image to my login form, with the website logo. This can be achieved, strangely, with another label, but this time contining a GIF image:</p><!-- Crayon Syntax Highlighter v2.4.3 -->
+
+		<div id="crayon-55a7c4772839d265344868" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; float: none; clear: both; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="off" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+photo = tkinter.PhotoImage(file="title.gif")
+w = tkinter.Label(window, image=photo)
+w.pack()</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-55a7c4772839d265344868-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c4772839d265344868-2">2</div><div class="crayon-num" data-line="crayon-55a7c4772839d265344868-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-line" id="crayon-55a7c4772839d265344868-1"><span class="crayon-v">photo</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">PhotoImage</span><span class="crayon-sy">(</span><span class="crayon-v">file</span><span class="crayon-o">=</span><span class="crayon-s">"title.gif"</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c4772839d265344868-2"><span class="crayon-v">w</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Label</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">image</span><span class="crayon-o">=</span><span class="crayon-i">photo</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c4772839d265344868-3"><span class="crayon-v">w</span><span class="crayon-sy">.</span><span class="crayon-e">pack</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0021 seconds] -->
+<p>You can only add GIF or PGM/PPM images, unless you import and use the <a href="http://www.pythonware.com/products/pil/">Python Imaging Library</a>. Here&#8217;s my finished login form (notice that I&#8217;ve also added another label at the top of the form):</p>
+<p><a href="http://usingpython.com/wp-content/uploads/UPLogin.jpg"><img class="alignnone size-full wp-image-1109" alt="Improved login form" src="http://usingpython.com/wp-content/uploads/UPLogin.jpg" width="330" height="248" /></a></p>
+<p>And here&#8217;s the code:</p><!-- Crayon Syntax Highlighter v2.4.3 -->
+
+		<div id="crayon-55a7c477283aa868976263" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; float: none; clear: both; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-plain-wrap"><textarea wrap="off" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+#import the 'tkinter' module
+import tkinter
+#create a new window
+window = tkinter.Tk()
+#set the window background to hex code '#a1dbcd'
+window.configure(background="#a1dbcd")
+#set the window title
+window.title("Welcome")
+#set the window icon
+window.wm_iconbitmap('Icon.ico')
+
+photo = tkinter.PhotoImage(file="title.gif")
+w = tkinter.Label(window, image=photo)
+w.pack()
+
+#create a label for the instructions
+lblInst = tkinter.Label(window, text="Please login to continue:", fg="#383a39", bg="#a1dbcd", font=("Helvetica", 16))
+#and pack it into the window
+lblInst.pack()
+
+#create the widgets for entering a username
+lblUsername = tkinter.Label(window, text="Username:", fg="#383a39", bg="#a1dbcd")
+entUsername = tkinter.Entry(window)
+#and pack them into the window
+lblUsername.pack()
+entUsername.pack()
+
+#create the widgets for entering a username
+lblPassword = tkinter.Label(window, text="Password:", fg="#383a39", bg="#a1dbcd")
+entPassword = tkinter.Entry(window)
+#and pack them into to the window
+lblPassword.pack()
+entPassword.pack()
+
+#create a button widget called btn
+btn = tkinter.Button(window, text="Login", fg="#a1dbcd", bg="#383a39")
+#pack the widget into the window
+btn.pack()
+
+#draw the window, and start the 'application'
+window.mainloop()</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-2">2</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-4">4</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-6">6</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-8">8</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-10">10</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-12">12</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-14">14</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-16">16</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-18">18</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-20">20</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-22">22</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-24">24</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-26">26</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-28">28</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-30">30</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-32">32</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-34">34</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-36">36</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-38">38</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-55a7c477283aa868976263-40">40</div><div class="crayon-num" data-line="crayon-55a7c477283aa868976263-41">41</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-line" id="crayon-55a7c477283aa868976263-1"><span class="crayon-p">#import the 'tkinter' module</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-2"><span class="crayon-e">import </span><span class="crayon-i">tkinter</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-3"><span class="crayon-p">#create a new window</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-4"><span class="crayon-v">window</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Tk</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-5"><span class="crayon-p">#set the window background to hex code '#a1dbcd'</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-6"><span class="crayon-v">window</span><span class="crayon-sy">.</span><span class="crayon-e">configure</span><span class="crayon-sy">(</span><span class="crayon-v">background</span><span class="crayon-o">=</span><span class="crayon-s">"#a1dbcd"</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-7"><span class="crayon-p">#set the window title</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-8"><span class="crayon-v">window</span><span class="crayon-sy">.</span><span class="crayon-e">title</span><span class="crayon-sy">(</span><span class="crayon-s">"Welcome"</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-9"><span class="crayon-p">#set the window icon</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-10"><span class="crayon-v">window</span><span class="crayon-sy">.</span><span class="crayon-e">wm_iconbitmap</span><span class="crayon-sy">(</span><span class="crayon-s">'Icon.ico'</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-12"><span class="crayon-v">photo</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">PhotoImage</span><span class="crayon-sy">(</span><span class="crayon-v">file</span><span class="crayon-o">=</span><span class="crayon-s">"title.gif"</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-13"><span class="crayon-v">w</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Label</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">image</span><span class="crayon-o">=</span><span class="crayon-i">photo</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-14"><span class="crayon-v">w</span><span class="crayon-sy">.</span><span class="crayon-e">pack</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-15">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-16"><span class="crayon-p">#create a label for the instructions</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-17"><span class="crayon-v">lblInst</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Label</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"Please login to continue:"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">fg</span><span class="crayon-o">=</span><span class="crayon-s">"#383a39"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">bg</span><span class="crayon-o">=</span><span class="crayon-s">"#a1dbcd"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">font</span><span class="crayon-o">=</span><span class="crayon-sy">(</span><span class="crayon-s">"Helvetica"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">16</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-18"><span class="crayon-p">#and pack it into the window</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-19"><span class="crayon-v">lblInst</span><span class="crayon-sy">.</span><span class="crayon-e">pack</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-20">&nbsp;</div><div class="crayon-line" id="crayon-55a7c477283aa868976263-21"><span class="crayon-p">#create the widgets for entering a username</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-22"><span class="crayon-v">lblUsername</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Label</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"Username:"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">fg</span><span class="crayon-o">=</span><span class="crayon-s">"#383a39"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">bg</span><span class="crayon-o">=</span><span class="crayon-s">"#a1dbcd"</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-23"><span class="crayon-v">entUsername</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Entry</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-24"><span class="crayon-p">#and pack them into the window</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-25"><span class="crayon-v">lblUsername</span><span class="crayon-sy">.</span><span class="crayon-e">pack</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-26"><span class="crayon-v">entUsername</span><span class="crayon-sy">.</span><span class="crayon-e">pack</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-27">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-28"><span class="crayon-p">#create the widgets for entering a username</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-29"><span class="crayon-v">lblPassword</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Label</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"Password:"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">fg</span><span class="crayon-o">=</span><span class="crayon-s">"#383a39"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">bg</span><span class="crayon-o">=</span><span class="crayon-s">"#a1dbcd"</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-30"><span class="crayon-v">entPassword</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Entry</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-31"><span class="crayon-p">#and pack them into to the window</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-32"><span class="crayon-v">lblPassword</span><span class="crayon-sy">.</span><span class="crayon-e">pack</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-33"><span class="crayon-v">entPassword</span><span class="crayon-sy">.</span><span class="crayon-e">pack</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-34">&nbsp;</div><div class="crayon-line" id="crayon-55a7c477283aa868976263-35"><span class="crayon-p">#create a button widget called btn</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-36"><span class="crayon-v">btn</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">tkinter</span><span class="crayon-sy">.</span><span class="crayon-e">Button</span><span class="crayon-sy">(</span><span class="crayon-i">window</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">text</span><span class="crayon-o">=</span><span class="crayon-s">"Login"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">fg</span><span class="crayon-o">=</span><span class="crayon-s">"#a1dbcd"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">bg</span><span class="crayon-o">=</span><span class="crayon-s">"#383a39"</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-37"><span class="crayon-p">#pack the widget into the window</span></div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-38"><span class="crayon-v">btn</span><span class="crayon-sy">.</span><span class="crayon-e">pack</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-39">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-55a7c477283aa868976263-40"><span class="crayon-p">#draw the window, and start the 'application'</span></div><div class="crayon-line" id="crayon-55a7c477283aa868976263-41"><span class="crayon-v">window</span><span class="crayon-sy">.</span><span class="crayon-e">mainloop</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0127 seconds] -->
+<p></p>
+<h3>Challenge</h3>
+<p>Improve the look of your login form, by using your own colour scheme (or that of your school).</p>
+					</div><!-- .entry-content -->
+		<footer class="entry-meta">
+					</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+			<a href="http://usingpython.com/python-login-form-challenge-solution/" title="Login Form Challenge Solution">< Prev</a>			&nbsp;|&nbsp; <a  href='http://www.usingpython.com'>Home</a> &nbsp;|&nbsp;			<a href="http://usingpython.com/dynamically-creating-widgets/" title="Dynamically Creating Widgets">Next ></a>			<br><br>
+							
+
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="nav_menu-3" class="widget widget_nav_menu"><div class="menu-gui-programming-container"><ul id="menu-gui-programming" class="menu"><li id="menu-item-1063" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1063"><a href="http://usingpython.com/using-tkinter/">Using Tkinter</a></li>
+<li id="menu-item-1080" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1080"><a href="http://usingpython.com/python-widgets/">Widgets</a></li>
+<li id="menu-item-1099" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1099"><a href="http://usingpython.com/python-login-form-challenge-solution/">Login Form Challenge Solution</a></li>
+<li id="menu-item-1112" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1103 current_page_item menu-item-1112"><a href="http://usingpython.com/making-widgets-look-nice/">Making Widgets Look Nice</a></li>
+<li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1121"><a href="http://usingpython.com/dynamically-creating-widgets/">Dynamically Creating Widgets</a></li>
+<li id="menu-item-1126" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1126"><a href="http://usingpython.com/voip-program-solution/">VoIP Program Solution</a></li>
+<li id="menu-item-1142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1142"><a href="http://usingpython.com/widget-interactivity/">Interactivity</a></li>
+<li id="menu-item-1145" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1145"><a href="http://usingpython.com/window-colour-program-solution/">Window Colour Program Solution</a></li>
+<li id="menu-item-1208" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1208"><a href="http://usingpython.com/guis-and-functions/">GUIs and Functions</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1226"><a href="http://usingpython.com/phone-book-program-solution/">Phone Book Program Solution</a></li>
+</ul></div></aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Main -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-8709871350199562"
+     data-ad-slot="2419032103"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</aside>		</div><!-- #secondary -->
+		</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		
+		--- &copy; 2013 usingpython.com ---
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript'>
+var colomatduration = 'fast';
+var colomatslideEffect = 'slideFade';
+</script><script type="text/javascript">
+disableSelection(document.body)
+</script>
+<script type='text/javascript' src='http://usingpython.com/wp-content/themes/twentytwelve/js/navigation.js?ver=1.0'></script>
+</body>
+</html>

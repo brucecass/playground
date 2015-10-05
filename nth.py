@@ -1,11 +1,5 @@
 #!/opt/local/bin/python
 
-# Script name : nthV2.py
-# Author : BDC
-# Date : 05.10.15
-# Description : play script in order to both try to learn a bit of python and to also try to 
-#               hightlight how easy nth term ks3 maths is to Son
-
 def ask_ok(prompt, retries=4, complaint='s or e, please!'):
     while True:
         ok = input(prompt)
@@ -49,22 +43,7 @@ def main_loop():
 	else:
 		sequence = input('Give me a comma separated sequence ')
 		print(sequence)
-		flag = False
-		for c in sequence:
-			if c in ',':
-				flag = True
-		if (flag):
-			# this might be a valid sequence of numbers as it contains at least one comma
-			# next we need to split the sequence string into values
-			my_array = sequence.split(',')
-			for i in my_array:
-				print(i)
-			print(len(my_array))
-			diff_array = [my_array[i+1]-my_array[i] for i in range(len(my_array)-1)]
-			print(diff_array)
-		else:
-			# this is NOT a valid sequence so need to bail out with an error msg
-			print('***Error: bad format of the sequence: ',sequence,' ***\n')
+
 
 while True:
 	main_loop()
