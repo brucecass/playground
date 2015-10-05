@@ -1,10 +1,12 @@
 #!/opt/local/bin/python
 
+#
 # Script name : nthV2.py
 # Author : BDC
 # Date : 05.10.15
 # Description : play script in order to both try to learn a bit of python and to also try to 
 #               hightlight how easy nth term ks3 maths is to Son
+#
 
 def ask_ok(prompt, retries=4, complaint='s or e, please!'):
     while True:
