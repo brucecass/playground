@@ -63,7 +63,10 @@ def main_loop():
 				# around the loop
 				#
 				try:
-					output_string = output_string + str(eval(new_equation)) + ','
+					if (loop != 5):
+						output_string = output_string + str(eval(new_equation)) + ','
+					else:
+						output_string = output_string + str(eval(new_equation))
 				except:
 
 					# someone must have entered some text that could not be 
