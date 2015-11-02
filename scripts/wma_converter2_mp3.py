@@ -57,7 +57,10 @@ for root, dirs, files in os.walk(basedir):
 			# best check to make sure the new_path2file mp3 file does not already exist
 			# No point wasting time recreating if it does
 			#
-			print(new_path2file)
+			try:	
+				print(new_path2file)
+			except:
+				logging.error('Very odd path name!!')
 			if os.path.isfile(dummy3):
 				#
 				# file already exists log incident to log file
@@ -72,13 +75,18 @@ for root, dirs, files in os.walk(basedir):
 				command = command + " && /usr/bin/lame -h -m s audiodump.wav -o " + new_path2file
 				#
 				# execute the built command using orig_path2file as i/p and new_path2file as o/p
+				# Calling an external command from a built up string _could_ fail. We therefore
+				# need to catch any exception and manage a failure.	
 				#
-				p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE).communicate()[0]
-				logging.info(p)
+				try:
+					p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE).communicate()[0]
+					logging.info(p)
+				except:
+					logging.error('Failed to process the last file!!')
 				#
 				# tidy up a bit
 				#
-				os.remove("audiodump.wav")
+				#os.remove("audiodump.wav")
 			#
 			# uncomment the following line if you just want to test on a single (first) file found
 			#
